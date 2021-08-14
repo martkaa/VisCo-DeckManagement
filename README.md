@@ -3,7 +3,7 @@ This program is a solution to the problem Deck Management of Cargos, which mysel
 
 ---
 ## Input and output
-The solution has taken form as an independent program which takes two Excel sheets as input. One containing information about Cargo which are to be loaded on to the platform, and one containing information about LDAs. The program's output is an Excel sheet containing information about placement of each cargo on the platform. 
+The solution has taken form as an independent program which consistes of two files: `dataHand.py`and `placer.py`. `dataHand.py` takes two Excel sheets as input. One containing information about Cargo which are to be loaded on to the platform, and one containing information about LDAs. The program's output is an Excel sheet containing information about placement of each cargo on the platform. 
 
 Examples of input sheets are: 
 1. `Temps to be loaded onto ARGOS.xlsx`
@@ -24,6 +24,8 @@ The program consists of several functions that are stacked to achieve the users 
 ---
 ### How to run the program
 
-The program is written in Python with the Anaconda Navigator. To run the program, one need to have either python installed with pip, conda and numpy, or run it from the Anaconda Navigator. 
+The program is object oriented and is written in Python with the Anaconda Navigator. To run the program, one need to have either python installed with pip, conda and numpy, or run it from the Anaconda Navigator. 
 
-`dataHand` needs correct path to input files in line 70 and 72 using Windows, or 85 and 87 using OS X. 
+`dataHand.py` needs correct path to input files in line 70 and 72 using Windows, or 85 and 87 using OS X. 
+
+One first need to run `dataHand.py` to convert input files to objects, and then run `placer.py` to recieve the result file. One can ajust the output filename in the function `writeLocationToFile()` in `placer.py`. 

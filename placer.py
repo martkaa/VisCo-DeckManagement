@@ -122,63 +122,6 @@ def placeCargosByLocation(location_list, cargos_list, LDA_list):
         
 # write to file:
 
-def writeToFile(placed_cargos_list):
-    LDA_id = "LDA001"
-    workbook = xls.Workbook('deckManagement.xlsx')
-    worksheet = workbook.add_worksheet()
-    
-    # Start from the first cell.
-    # Rows and columns are zero indexed.
-    row = 0
-    col = 0
-    
-    # iterating through content list
-    worksheet.write(row, col, LDA_id)
-    for item in placed_cargos_list :
-    
-        # write operation perform
-        worksheet.write(row, col, LDA_id)
-        worksheet.write(row, col + 1, item.id)
-        coordinates = ','.join([str(coor) for coor in item.coor])
-        #worksheet.write(row, col + 2, coordinates)
-        worksheet.write(row, col + 3, item.rotation)
-    
-        # incrementing the value of row by one with each iteratons.
-        row += 1
-        
-    workbook.close()
-
-def writeALLToFile(LDA_list):
-    workbook = xls.Workbook('deckManagement_test_6_05.xlsx')
-    worksheet = workbook.add_worksheet()
-    workbook.set_properties({
-    'title':    'LDA, Cargo ID, coordinates, rotation, length, width, weight'})
-    
-    # Start from the first cell.
-    # Rows and columns are zero indexed.
-    row = 0
-    col = 0
-    for LDA in LDA_list:
-        placed_cargos = LDA.cargos
-    # iterating through content list
-    #worksheet.write(row, col, LDA_id)
-        for item in placed_cargos :
-    
-            # write operation perform
-            worksheet.write(row, col, LDA.id)
-            worksheet.write(row, col + 1, item.id)
-            coordinates = ','.join([str(coor) for coor in item.coor])
-            worksheet.write(row, col + 2, coordinates)
-            worksheet.write(row, col + 3, item.rotation)
-            worksheet.write(row, col + 4, item.length)
-            worksheet.write(row, col + 5, item.width)
-            worksheet.write(row, col + 6, item.weight)
-        
-            # incrementing the value of row by one with each iteratons.
-            row += 1
-        
-    workbook.close()
-
 def writeLocationsToFile(locations_list):
     workbook = xls.Workbook('deckManagement_placement_file.xlsx')
     #workbook = xls.Workbook('fase3.xlsx')
@@ -221,18 +164,14 @@ def writeLocationsToFile(locations_list):
     worksheet.write(row, col + 11, "Description")
     worksheet.write_comment(row, col + 11, "Description from original data sheet.")
     
-
     worksheet.set_column(1,9,15,align_format)
     worksheet.set_row(0,25,first_row_format)
     worksheet.set_column(0,0,20)
     worksheet.set_column(10,12,40)
    
-    
     for location in locations_list:
         for LDA in location.LDAs:
             placed_cargos = LDA.cargos
-        # iterating through content list
-        #worksheet.write(row, col, LDA_id)
             for item in placed_cargos :
                 try:
                     worksheet.write(row + 1, col, location.name)
@@ -269,7 +208,6 @@ def writephase4_and_5(locations_list):
 
     first_row_format = workbook.add_format({'bold': True, 'bg_color':'yellow','align':'center', 'valign':'vcenter'})
     align_format = workbook.add_format({'align':'center', 'valign':'vcenter'})
-    #left_format = workbook.add_format({'align':'left', 'valign':'vleft'})
 
     worksheet.write(row, col, "Location")
     worksheet.write_comment(row, col, "Name of Location on platform.")
@@ -297,8 +235,6 @@ def writephase4_and_5(locations_list):
     for location in locations_list:
         for LDA in location.LDAs:
             placed_cargos = LDA.cargos
-        # iterating through content list
-        #worksheet.write(row, col, LDA_id)
             for item in placed_cargos :
                 try:
                     worksheet.write(row + 1, col, location.name)
@@ -320,24 +256,18 @@ def writephase4_and_5(locations_list):
 def result(loc, cargos_list, LDA_list):
     loc_list, rest_cargos = placeCargosByLocation(loc, cargos_list, LDA_list)
     sum  = 0
-    labs = ["space/unavailable","available"]
     for loc in loc_list:
         print(loc.name)
         
         for lda in loc.LDAs:
             weight = 0
-            #print(lda.id, lda.cargos)
-            #print(lda.measurements)
             sum += len(lda.cargos)
             #print("Weight remaining:", lda.max_weight)
             for carg in lda.cargos:
                 weight += carg.weight
                 print(carg.id, carg.length, carg.width, carg.location)
             
-            # plot
-            i = 2
-            names = [x.id for x in lda.cargos]
-            labels = labs.append(names)
+            # visualize the LDAs with python. if wanted: uncomment plt.show()
             plt.title(lda.id)
             plt.pcolormesh(lda.measurements, edgecolors='k')
             ax = plt.gca()
@@ -347,9 +277,6 @@ def result(loc, cargos_list, LDA_list):
             #plt.show()
             
     print("Total cargos placed: ", sum, "Not placed: ", len(rest_cargos))
-    #for i in rest_cargos:
-     #   print(i, i.length, i.width, i.weight)
-
     writeLocationsToFile(loc_list)
 
 #result(data.list_of_locations, data.sorted_by_area, data.LDA_sorted_smallest)
