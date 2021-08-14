@@ -1,7 +1,0 @@
-
-This program is a solution to the problem of Deck Management of Cargos, which myself and Vetle Chyba Nordstad worked on summer 2021 on behalf of VisCo. 
-
-The program is written in Python with the Anaconda Navigator. 
-
-The solution has taken form as an independent program which takes an Excel sheet containing cargo info as input and returns an Excel sheet containing 
-the wanted information about placement of each cargo on the platform. 
