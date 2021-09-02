@@ -1,5 +1,5 @@
 # Deck Management Program
-This program is a solution to the problem Deck Management of Cargos, which myself and Vetle Chyba Nordstad worked on summer 2021 on behalf of VisCo. The essence of the problem is to place as many cargos to as optimal locations as possible. 
+This program is a solution to the problem Deck Management of Cargos, which myself and Vetle Chyba Nordstad worked on summer 2021 on behalf of VisCo. The essence of the problem is to place as many cargos to as optimal locations as possible on a set of lay down areas (LDAs) on a platform. 
 
 ---
 ## Input and output
@@ -17,9 +17,13 @@ The output file of results can be ajusted after the users wish, but for now it c
 
 The program is based on criterias displayed in the diagram `flow_chart_5_phases`. This given to us as a guideline of what the program should take in consideration when placing a cargo on to a LDA.
 
-The placer algorithm and core of the program is called `placeCargosSingleLDA()`. As the name says, the function takes one LDA and a list of several cargos as input. As the 5 phases implies the algorithm has several if-statements that checks if the criteria of placement of the cargo is fulfilled. The algorithm is visualized in the diagram `flowchart_program`.
+The placer algorithm and core of the program is called `placeCargosSingleLDA()`. As the name says, the function takes one LDA and a list of cargos as input. As the 5 phases implies the algorithm has several if-statements that checks if the criteria of placement of the cargo is fulfilled. The algorithm is visualized in the diagram `flowchart_program`.
 
 The program consists of several functions that are stacked to achieve the users desired results. These are marked with arrows in the flowchart.
+
+## Results
+
+We are content with the final program considering the criterias that was given, and that it works. The results can be obtained in a slideshow in the pdf 
 
 ---
 ### How to run the program
