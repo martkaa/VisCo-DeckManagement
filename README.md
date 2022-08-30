@@ -1,7 +1,7 @@
 # Deck Management Program
 This program is a solution to the problem Deck Management of Cargos, which myself and Vetle Chyba Nordstad worked on summer 2021 on behalf of VisCo. The essence of the problem is to place as many cargos to as optimal locations as possible on a set of lay down areas (LDAs) on a platform.
 
-visCo has developed a Digital twin called vCog which has the purpose of making the run and maintainance of a platform in for example the North Sea easier. vCog consists of several differnt features, or cogs as visCo have named them. The task was to make a program which could eventually be implemented in the cog called Deck Management to make the handeling of cargos automated.
+visCo has developed a Digital twin called vCog which has the purpose of making the run and maintainance of a platform in for example the North Sea easier. vCog consists of several different cogs, or features. The task was to make a program which could eventually be implemented in the cog called Deck Management to make the handeling of cargos automated.
 
 ---
 ## Input and output
